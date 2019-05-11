@@ -34,6 +34,7 @@ var reservations = [
     id: 'A3'
   },
 ];
+var waiting = []
 
 // Routes
 // =============================================================
@@ -56,6 +57,12 @@ app.get("/api/reservation", function(req, res) {
   return res.json(reservations);
 });
 
+app.get('/api/reservations', function(req,res) {
+  return res.json(reservations)
+})
+app.get('/api/waiting', function(req,res) {
+  return res.json(waiting)
+})
 // Displays a single character, or returns false
 app.get("/api/reservation/:reservation", function(req, res) {
   var chosen = req.params.reservation;

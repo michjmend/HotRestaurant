@@ -23,12 +23,12 @@ Our application has two parts:
 
 Here, you will see the Current Reservations and waiting list in a table format:
 
-Table #1
--------------
-ID: #
-Name: name
-Email: email@email.com
-Phone: 9999999999
+Table 1 | Input
+------------- | -------------
+ID:  | ID number
+Name: | First and Last Name
+Email | email@email.com
+Phone: | (999) 999-9999
 
 There is also a Control Panel where you can access the following links:
 * Clear Table

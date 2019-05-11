@@ -9,7 +9,9 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 <!-- header -->
   <div class="container">
@@ -17,8 +19,8 @@
       <h1><i class="fas fa-dragon"></i> Dracarys Restaurant</h1>
       <h3>Make your reservation</h3>
       <hr>
-      <a href="index.html"><button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button></a>
-      <a href="tables.html"><button class="btn btn-primary btn-lg"><i class="far fa-list-alt"></i> View Tables</button></a>
+      <a href="/"><button class="btn btn-light btn-lg"><i class="fas fa-home"></i></button></a>
+      <a href="/tables"><button class="btn btn-primary btn-lg"><i class="far fa-list-alt"></i> View Tables</button></a>
     </div>
 <!-- reservation add-ons -->
     <div class="row">
@@ -63,6 +65,25 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    //
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        Name: $("#name").val().trim(),
+        Phone: $("#phone").val().trim(),
+        Email: $("#email").val().trim(),
+        UniqueID: $("#unique-id").val().trim()
+      };
+      // Question: What does this code do??
+      $.post("/api/reservation", newReservation)
+        .then(function(data) {
+          console.log("reservation.html", data);
+          alert("Adding reservation");
+        });
+    });
+  </script>
 
   <!-- Script -->
   <script src=“https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js“></script>

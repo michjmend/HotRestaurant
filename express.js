@@ -39,25 +39,25 @@ var reservations = [
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/index.html", function(req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/tables.html", function(req, res) {
+app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-app.get("/reservation.html", function(req, res) {
+app.get("/reservation", function(req, res) {
   res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
 // Displays all reservations
-app.get("/", function(req, res) {
+app.get("/api/reservation", function(req, res) {
   return res.json(reservations);
 });
 
 // Displays a single character, or returns false
-app.get("/api/reservations/:reservation", function(req, res) {
+app.get("/api/reservation/:reservation", function(req, res) {
   var chosen = req.params.reservation;
 
   console.log(chosen);
@@ -77,11 +77,11 @@ app.post("/api/reservation", function(req, res) {
   // This works because of our body parsing middleware
   var newreservation = req.body;
 
-  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
+  // newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newreservation);
 
-  characters.push(newreservation);
+  reservations.push(newreservation);
 
   res.json(newreservation);
 });

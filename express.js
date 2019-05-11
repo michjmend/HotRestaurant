@@ -12,26 +12,26 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
+// Reservation Queue (DATA)
 // =============================================================
-var characters = [
+var reservations = [
   {
     Name: "Andrew",
-    phone_no: 222 333 4444 ,
-    email: Andrew@Wait.com ,
-    id: A1
+    phone_no: '222-333-4444',
+    email: 'Andrew@Wait.com',
+    id: 'A1'
   },
   {
     Name: "Mick",
-    phone_no: ,
-    email: ,
-    id: A2
+    phone_no: '201-555-1234',
+    email: 'mick@mick.com',
+    id: 'A2'
   },
   {
     Name: "Trisha",
-    phone_no: ,
-    email: ,
-    id: A3
+    phone_no: '303-981-1171',
+    email: 'trish@trish.com',
+    id: 'A3'
   },
 ];
 
@@ -40,27 +40,31 @@ var characters = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-// Displays all characters
-app.get("/api/characters", function(req, res) {
-  return res.json(characters);
+app.get("/reservation", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+// Displays all reservations
+app.get("/", function(req, res) {
+  return res.json(reservations);
 });
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
-  var chosen = req.params.character;
+app.get("/api/reservations/:reservation", function(req, res) {
+  var chosen = req.params.reservation;
 
   console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  for (var i = 0; i < reservation.length; i++) {
+    if (chosen === reservation[i].routeName) {
+      return res.json(reservation[i]);
     }
   }
 
@@ -68,20 +72,18 @@ app.get("/api/characters/:character", function(req, res) {
 });
 
 // Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
+app.post("/api/reservation", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
-  var newcharacter = req.body;
+  var newreservation = req.body;
 
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newcharacter);
+  console.log(newreservation);
 
-  characters.push(newcharacter);
+  characters.push(newreservation);
 
-  res.json(newcharacter);
+  res.json(newreservation);
 });
 
 // Starts the server to begin listening

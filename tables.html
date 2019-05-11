@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hot Restaurant - Express</title>
+  <title>Hot Restaurant - tables</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
 </head>
 
 <body>
 
+<!-- header -->
   <div class="container">
     <div class="jumbotron">
       <h1>Hot Restaurant</h1>
       <h3>Current Reservations and Waiting List</h3>
       <hr>
-      <a href="index.html"><button type="button" class="btn btn-light"> <i class="fas fa-home"></i></button></a>
+      <a href="index.html"><button type="button" class="btn btn-light btn-lg"> <i class="fas fa-home"></i></button></a>
       <a href="reservation.html"><button class="btn btn-danger btn-lg"><i class="fas fa-calendar-week"></i> Make Reservation</button></a>
-     
     </div>
+<!-- reservation tables -->
     <div class="row">
 
       <div class="col-12">
@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-
+<!-- waiting list -->
         <div class="card">
           <div class="card-header">
             <h3><strong>Waiting List</strong></h3>
@@ -52,11 +52,10 @@
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Script -->
-  <script src="logic.js"></script>
-
+  <script src=“https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js“></script>
+  <script src=“express.js”></script>
 </body>
 
 </html>

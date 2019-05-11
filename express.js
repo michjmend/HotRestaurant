@@ -34,12 +34,13 @@ var reservations = [
     id: 'A3'
   },
 ];
+var waiting = []
 
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/index.html", function(req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
@@ -56,6 +57,12 @@ app.get("/", function(req, res) {
   return res.json(reservations);
 });
 
+app.get('/api/reservations', function(req,res) {
+  return res.json(reservations)
+})
+app.get('/api/waiting', function(req,res) {
+  return res.json(waiting)
+})
 // Displays a single character, or returns false
 app.get("/api/reservations/:reservation", function(req, res) {
   var chosen = req.params.reservation;
@@ -81,7 +88,7 @@ app.post("/api/reservation", function(req, res) {
 
   console.log(newreservation);
 
-  characters.push(newreservation);
+  reservations.push(newreservation);
 
   res.json(newreservation);
 });

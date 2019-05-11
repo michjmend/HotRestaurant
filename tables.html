@@ -19,8 +19,8 @@
       <h1>Hot Restaurant</h1>
       <h3>Current Reservations and Waiting List</h3>
       <hr>
-      <a href="index.html"><button type="button" class="btn btn-light btn-lg"> <i class="fas fa-home"></i></button></a>
-      <a href="reservation.html"><button class="btn btn-danger btn-lg"><i class="fas fa-calendar-week"></i> Make Reservation</button></a>
+      <a href="/"><button type="button" class="btn btn-light"> <i class="fas fa-home"></i></button></a>
+      <a href="/reservation"><button class="btn btn-danger btn-lg"><i class="fas fa-calendar-week"></i> Make Reservation</button></a>
     </div>
 <!-- reservation tables -->
     <div class="row">
@@ -29,14 +29,10 @@
 
         <div class="card mb-4">
           <div class="card-header">
-            <h3><strong>Current Reservation</strong></h3>
+            <h3><strong>Current Reservations</strong></h3>
           </div>
           <div class="card-body">
-            <input type="text" id="character-search" class="form-control">
-            <br>
-            <div class="text-right">
-
-            </div>
+            <h3 id="res-name"></h3>
           </div>
         </div>
 <!-- waiting list -->
@@ -45,6 +41,7 @@
             <h3><strong>Waiting List</strong></h3>
           </div>
           <div class="card-body">
+            <h3 id="waiting-name"></h3>
 
             </div>
           </div>
@@ -54,8 +51,33 @@
   </div>
 
   <!-- Script -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.get("/api/reservations/", function(data) {
+        if (data.length > 0) {
+          for (i=0; i<data.length; i++) {
+            $('#res-name').append('<ul>', data[i].Name, '<br>')
+          }
+        }
+        else {
+          $("#res-name").text("THERE IS NO ONE CURRENTLY ON THE RESERVATION LIST");
+        }
+      });
+      $.get("/api/waiting/", function(data) {
+        if (data.length > 0) {
+          for (i=0; i<data.length; i++) {
+            $('#waiting-name').append('<ul>', data[i].Name, '<br>')
+          }
+        }
+        else {
+          $("#waiting-name").text("THERE IS NO ONE CURRENTLY ON THE WAITING LIST");
+        }
+      });
+    });
+  </script>
   <script src=“https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js“></script>
   <script src=“express.js”></script>
+
 </body>
 
 </html>

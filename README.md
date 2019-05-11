@@ -40,6 +40,6 @@ There is also a Control Panel where you can access the following links:
 
 ## Make Reservation Page :memo:
 
-Here there will be a reservation form for the user to fill out.
-Once you have inputted all your information, hit submit and your information will be stored! How cool!
-The current tables API and waitlist API links are also included on this page.
+* Here there will be a reservation form for the user to fill out.
+* Once you have inputted all your information, hit submit and your information will be stored! How cool!
+* The current tables API and waitlist API links are also included on this page.
